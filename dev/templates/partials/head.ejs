@@ -1,0 +1,43 @@
+
+<%_ var title = pageTitle + "INSERT TITLE"; _%>
+<%_ var url = "INSERT URL" + route _%>
+
+<!DOCTYPE html>
+<html lang="en-GB">
+
+<head>
+	<meta charset="utf-8" />
+	<title><%- title %></title>
+
+	<meta name="description" content="INSERT DESCRIPTION">
+	<meta name="keywords" content="INSERT KEYWORDS">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta property="og:title" content="<%- title %>">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="<%- url %>">
+  <meta property="og:description" content="INSERT DESCRIPTION AGAIN">
+  <meta property="og:image" content="../assets/images/banner.jpg">
+
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+	<link href="./main.css" rel="stylesheet">
+
+  <script>
+  /* FEATURE DETECTION THAT NEEDS TO BE DONE BEFORE WINDOW LOAD */
+
+  // Webp detection (always useful)
+    var webp = new Image();
+    webp.onerror = function(){
+      document.documentElement.classList.add("no-webp");
+    };
+    webp.onload = function(){
+      document.documentElement.classList.add("webp");
+    };
+    webp.src = 'data:image/webp;base64,UklGRjIAAABXRUJQVlA4ICYAAACyAgCdASoBAAEALmk0mk0iIiIiIgBoSygABc6zbAAA/v56QAAAAA==';
+  </script>
+
+  <script src="./scripts.js" defer></script>
+</head>

@@ -1,0 +1,203 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+
+
+
+
+/// BODY'S DIMENSIONS
+/// -----------------
+
+/// @type Length : absolute max widths of the body
+/// @type Length : relative width of body
+/// @type Number : number of columns of the grid
+/// @type Length : the width of a text paragraph, should be no more than 80ch for readability
+
+$max-width__body: 1180px !default;
+$width__body: 80vw !default;
+$cols__body: 10 !default;
+
+$max-text-width: 80ch !default;
+
+
+
+// All width in two columns layout are calculated as follows:
+// ((grid-columns / 2 ) -1) / grid-columns
+// The idea is that 2 articles + 2 columns gutter should take 100% of free space
+// USAGE: multiply $col-width by either 100% or 100vw
+// $col-width: ($cols__body / 2 - 1) / $cols__body;
+$col-width: round($cols__body / 2 - 1) / $cols__body !default;
+
+
+
+
+
+/// MULTIPLICATORS
+/// ---------------
+
+/// Design proportion: 60%
+// All numbers are rounded to 2 digits after the decimal
+
+/// @type Number
+$small-mul: 0.6;
+$x-small-mul: round(pow($small-mul, 2) * 100) / 100;
+$xx-small-mul: round(pow($small-mul, 3) * 100) / 100;
+$xxx-small-mul: round(pow($small-mul, 4) * 100) / 100;
+
+
+/// @type Number
+$large-mul: round((1 / $small-mul) * 100) / 100;
+$larger-mul: round(pow($large-mul, 2) * 100) / 100;
+$x-large-mul: round(pow($large-mul, 3) * 100) / 100;
+$xx-large-mul: round(pow($large-mul, 4) * 100) / 100;
+$xxx-large-mul: round(pow($large-mul, 5) * 100) / 100;
+$xxxx-large-mul: round(pow($large-mul, 6) * 100) / 100;
+
+
+
+
+
+// FONTS
+// ------
+
+
+// Font Stacks
+// Stacks list: https://gist.github.com/jacrook/9009655
+// Stacks list 2: https://www.cssfontstack.com/
+
+
+/// @type List
+$font-family__main-title : serif !default;
+$font-family__primary    : sans-serif !default;
+$font-family__header     : serif !default;
+
+
+// Sizes
+// Note: line height and is set in _typography.scss and should be one of:
+// - $large-mul
+// - 2
+/// @type Length
+$font-size--base: 16px !default;
+$font-size--medium: 18x !default;
+$font-size--large: 20px !default;
+
+
+
+
+
+// COLOURS
+// --------
+
+
+
+// PALETTE :
+// Works with two main colours, one cold and one warm, opposite in the colour wheel
+// Note: We didn't use a map because the colour functions (lighten, darken...)
+// dn't work inside a map with key value pairs
+// Use hsl notation
+
+// HERE DESCRIBE THE COLOUR SCHEME, HUES, ETC...
+
+
+
+// Flashy colours
+$c-cold: hsl(206, 62, 73) !default; // Turquoise
+$c-warm: hsl(25, 100, 57) !default; // Apricot
+
+
+
+// White, black and grey
+$c-cold-white:   tint($c-cold, 90%)  !default;
+$c-warm-white:   tint($c-warm, 90%)  !default;
+
+$c-cold-black:   shade($c-cold, 90%) !default;
+$c-warm-black:   shade($c-warm, 90%) !default;
+
+$c-grey:   desaturate($c-cold, 100%) !default;
+$c-light-grey:   tint($c-grey, 90%)  !default;
+$c-dark-grey:    shade($c-grey, 90%) !default;
+
+
+
+
+
+// USAGE
+// Maps to the colour palette
+
+// Rough guide
+// - Main colour to use at important places
+// - 1 or 2 accent colours
+// - Background colour
+// - Typography colour
+// - Some tints or shades that can be used for filters
+
+
+// Background colours
+$colour__background--light: $c-cold-white !default;
+$colour__background--dark: $c-warm-black !default;
+$colour__background--nav: change-color($c-cold, $alpha: 0.4) !default;
+$colour__background--menu: change-color($c-cold, $alpha: 0.7) !default;
+
+
+
+// Text colour
+$colour__title: $c-cold !default;
+$colour__section-title: $c-warm-black !default;
+
+$colour__text--dark: $c-cold-black !default;
+$colour__text--bright: $c-warm-white !default;
+
+$colour__link--light: $c-dark-grey !default;
+$colour__link--dark: $c-light-grey !default;
+
+
+// Image filter colours
+$colour__filter: change-color($c-cold-black, $alpha: 0.6) !default;
+
+
+// Selection colour used for text selection
+$colour__selected: $c-warm !default;
+
+
+// Borders and shadows colours
+$colour__border: $c-cold-white !default;
+$colour__shadow--strong: change-color($c-cold-black, $alpha: 0.7) !default;
+$colour__shadow--light: change-color($c-cold-black, $alpha: 0.3) !default;
+
+
+
+
+
+
+/// BREAKPOINTS MAP
+/// ----------------
+
+/// Use with the breakpoint plug-in
+/// Media queries need to manage dimensions, orientation and density
+/// @prop {String} keys - Keys are identifiers mapped to a given length
+/// @prop {Map} values - Values are actual breakpoints expressed in pixels
+$breakpoints: (
+  'small': 320px,
+  'medium': 768px,
+  'large': 1024px,
+  'huge': 1400px
+) !default;
+
+
+
+
+
+/// RANDOM STUFF
+/// -------------
+
+// Border radius
+$br--default    : .5em;
+$br--round      : 50%;
+
+
+
+// Transitions
+$trns-duration  : .3s;
+$trns-duration--fast: .05s;
+$trns-delay     : .05s;
